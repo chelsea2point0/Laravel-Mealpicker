@@ -18,6 +18,7 @@ class CreateMealsTable extends Migration
             $table->string('name');
             $table->integer('minutes');
             $table->text('description');
+            $table->text('instructions');
             $table->string('image_path');
             $table->integer('serves');
             $table->timestamps();

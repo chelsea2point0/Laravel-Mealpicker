@@ -21,6 +21,7 @@ class CreateMealsTable extends Migration
             $table->text('instructions');
             $table->string('image_path');
             $table->integer('serves');
+            $table->string('difficulty');
             $table->timestamps();
         });
     }

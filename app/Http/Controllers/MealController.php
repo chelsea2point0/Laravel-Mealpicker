@@ -13,7 +13,8 @@ class MealController extends Controller
      */
     public function index()
     {
-        //
+        $meals = \App\Meal::all();
+	    return response()->json($meals);
     }
 
     /**

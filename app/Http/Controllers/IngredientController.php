@@ -13,7 +13,8 @@ class IngredientController extends Controller
      */
     public function index()
     {
-        //
+        $ingredients = \App\Ingredient::all();
+	    return response()->json($ingredients);
     }
 
     /**

@@ -18,3 +18,9 @@ Route::get('/', function () {
 Route::get('/workspace', function () {
     echo 'hi chelsea!';
 });
+
+Route::resources([
+    'categories'   => 'CategoryController',
+    'ingredients'  => 'IngredientController',
+    'meals'        => 'MealController'
+]);

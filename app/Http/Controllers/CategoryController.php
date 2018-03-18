@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\Factory;
 
 class CategoryController extends Controller
 {
@@ -14,7 +15,8 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = \App\Category::all();
-	    return response()->json($categories);
+	    // return response()->json($categories);
+        return view('categories.index', ['categories' => $categories]);
     }
 
     /**
@@ -24,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -35,7 +37,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new \App\Category([
+            'name' => $request->get('name')
+        ]);
+
+        $category->save();
+        return redirect('/categories');
     }
 
     /**
@@ -57,7 +64,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = \App\Category::find($id);
+        return view('categories.edit', (['category' => $category, 'id' => $id]));
     }
 
     /**
@@ -69,7 +77,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = \App\Category::find($id);
+        $category->name = $request->get('name');
+        $category->save();
+
+        return redirect('/categories');
     }
 
     /**
@@ -80,6 +92,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = \App\Category::find($id);
+        $category->delete();
+
+        return redirect('/categories');
     }
 }

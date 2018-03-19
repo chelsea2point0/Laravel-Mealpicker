@@ -2,7 +2,7 @@
 @section('content')
   <div class="container">
     <h1>Categories</h1>
-    <a href="{{action('CategoryController@create')}}" class="btn btn-success">Add New Category</a>
+    <a href="{{action('CategoryController@create')}}" class="btn btn-success">New Category</a>
     <table class="table table-striped">
     <thead>
       <tr>

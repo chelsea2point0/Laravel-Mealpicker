@@ -14,7 +14,7 @@ class MealController extends Controller
     public function index()
     {
         $meals = \App\Meal::all();
-	    return response()->json($meals);
+        return view('meals.index', ['meals' => $meals]);
     }
 
     /**
@@ -24,7 +24,7 @@ class MealController extends Controller
      */
     public function create()
     {
-        //
+        return view('meals.create');
     }
 
     /**
@@ -35,7 +35,18 @@ class MealController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $meal = new \App\Meal([
+            'name'         => $request->get('name'),
+            'minutes'      => $request->get('minutes'),
+            'description'  => $request->get('description'),
+            'instructions' => $request->get('instructions'),
+            //'image_path'   => $request->get('image_path'),
+            'serves'       => $request->get('serves'),
+            'difficulty'   => $request->get('difficulty')
+        ]);
+        $meal->save();
+
+        return redirect('/meals');
     }
 
     /**
@@ -57,7 +68,8 @@ class MealController extends Controller
      */
     public function edit($id)
     {
-        //
+        $meal = \App\Meal::find($id);
+        return view('meals.edit', (['meal' => $meal, 'id' => $id]));
     }
 
     /**
@@ -69,7 +81,18 @@ class MealController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $meal = \App\Meal::find($id);
+        $meal->name = $request->get('name');
+        $meal->minutes = $request->get('minutes');
+        $meal->description = $request->get('description');
+        $meal->instructions = $request->get('instructions');
+        $meal->image_path = $request->get('image_path');
+        $meal->serves = $request->get('serves');
+        $meal->difficulty = $request->get('difficulty');
+
+        $meal->save();
+
+        return redirect('/meals');
     }
 
     /**
@@ -80,6 +103,10 @@ class MealController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $meal = \App\Meal::find($id);
+        $meal->delete();
+
+        return redirect('/meals');
+
     }
 }

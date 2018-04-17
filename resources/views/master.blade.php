@@ -10,8 +10,14 @@
         <!-- Fonts -->
         <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css">
     </head>
+    <nav>
+        
+    </nav>
     <body>
         <br><br>
         @yield('content')
     </body>
+    <footer>
+        <p>Created by Chelsea Schaefer, 2018</p>
+    </footer>
 </html>

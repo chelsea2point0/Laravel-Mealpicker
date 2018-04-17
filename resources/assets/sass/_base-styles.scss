@@ -1,0 +1,12 @@
+.flex-center {
+    //background-image: url('../../../public/images/pickyeater_home_bg_002.png');
+    background-size: cover;
+    background-position: center;
+}
+
+footer {
+    background-color: $footer-default-bg;
+    color: $footer-default-txt-color;
+    padding: 50px;
+    text-align: center;
+}

@@ -24,3 +24,7 @@ Route::resources([
     'ingredients'  => 'IngredientController',
     'meals'        => 'MealController'
 ]);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -24,7 +24,8 @@ class MealController extends Controller
      */
     public function create()
     {
-        return view('meals.create');
+        $categories = \App\Category::all();
+        return view('meals.create', ['categories' => $categories]);
     }
 
     /**
@@ -35,6 +36,8 @@ class MealController extends Controller
      */
     public function store(Request $request)
     {
+        $mealCategories = $request->input('meal-category');
+
         $meal = new \App\Meal([
             'name'         => $request->get('name'),
             'minutes'      => $request->get('minutes'),
@@ -45,6 +48,11 @@ class MealController extends Controller
             'difficulty'   => $request->get('difficulty')
         ]);
         $meal->save();
+
+        foreach($mealCategories as $category) {
+            $meal->categories()
+                ->attach($category);
+        }
 
         return redirect('/meals');
     }

@@ -15,4 +15,12 @@ class Meal extends Model
         'serves',
         'difficulty'
     ];
+
+    /**
+    * The categories that belong to the meal.
+    */
+   public function categories()
+   {
+       return $this->belongsToMany('App\Category', 'meal_category');
+   }
 }

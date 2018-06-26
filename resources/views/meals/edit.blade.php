@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('master')
 @section('content')
 <div class="container">
   <form method="post" action="{{action('MealController@update', $id)}}">
@@ -15,7 +15,7 @@
       </div>
       <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Serves</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control form-control-lg" id="" name="serves" value="{{$meal->serves}}">
+        <input type="number" class="form-control form-control-lg" id="meal-serves" name="serves" value="{{$meal->serves}}">
       </div>
       <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Difficulty</label>
       <div class="col-sm-10">
@@ -33,8 +33,9 @@
       </div>
       <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Time Required (min)</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control form-control-lg" id="" name="minutes" value="{{$meal->minutes}}">
+        <input type="number" class="form-control form-control-lg" id="meal-time" name="minutes" value="{{$meal->minutes}}">
       </div>
+      
 
     </div>
     <div class="form-group row">

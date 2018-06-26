@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts.app')
 @section('content')
 <div class="container">
   <form method="post" action="{{action('CategoryController@update', $id)}}">
